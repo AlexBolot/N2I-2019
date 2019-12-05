@@ -1,0 +1,47 @@
+version: '3'
+
+services:
+
+  postgres-procedure:
+    image: postgres
+    container_name: postgres-procedure
+    environment:
+      - POSTGRES_USER=matchmacking
+      - POSTGRES_PASSWORD=matchmacking
+      - POSTGRES_DB=matchmacking
+    ports:
+      - 54320:5432
+      
+  postgres-profil:
+    image: postgres
+    container_name: postgres-profil
+    environment:
+      - POSTGRES_USER=matchmacking
+      - POSTGRES_PASSWORD=matchmacking
+      - POSTGRES_DB=matchmacking
+    ports:
+      - 54320:5432
+
+
+  app:
+    image: profil
+    ports:
+    - 8081:8081
+    links:
+      - mongo
+    environment:
+      SPRING_DATA_MONGODB_URI: mongodb://mongo:27017/account
+    networks:
+      - backend
+    container_name: app
+
+  start_dependencies:
+    image: dadarek/wait-for-dependencies
+    depends_on:
+      - mongo
+    command: mongo:27017 
+    networks:
+      - backend
+
+networks:
+  backend:
