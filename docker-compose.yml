@@ -2,30 +2,6 @@ version: '3'
 
 services:
 
-#  postgres-procedure:
-#    image: postgres
-#    container_name: postgres-procedure
-#    environment:
-#      - POSTGRES_USER=procedure
-#      - POSTGRES_PASSWORD=procedure
-#      - POSTGRES_DB=procedure
-#    ports:
-#      - 54321:5432
-#    networks:
-#      - project
-
-  postgres-profil:
-    image: postgres
-    container_name: postgres-profil
-    environment:
-      - POSTGRES_USER=matchmaking
-      - POSTGRES_PASSWORD=matchmaking
-      - POSTGRES_DB=matchmaking
-    ports:
-      - 54320:5432
-    networks:
-      - project
-
   profil:
     container_name: profil
     image: profil
@@ -38,37 +14,16 @@ services:
       - 8080
     ports:
       - 8080:8080
-    links:
-      - postgres-profil
-    networks:
-      - project
 
-#  matching:
-#    container_name: matching
-#    image: matching
-#    build:
-#      context: matching
-#      dockerfile: Dockerfile
-#      args:
-#        JAR_FILE: target/matching-0.0.1-SNAPSHOT.jar
-#    expose:
-#      - 8080
-#    ports:
-#      - 8081:8080
-#    links:
-#      - postgres-procedure
-#    networks:
-#      - project
-
-#  start_dependencies:
-#    image: dadarek/wait-for-dependencies
-#    depends_on:
-#      - postgres-profil
-#      - postgres-procedure
-#    command: postgres-profil:54320 postgres-procedure:54321
-#    networks:
-#      - project
-
-networks:
-  project:
-    driver: bridge
+  matching:
+    container_name: matching
+    image: matching
+    build:
+      context: matching
+      dockerfile: Dockerfile
+      args:
+        JAR_FILE: target/matching-0.0.1-SNAPSHOT.jar
+    expose:
+      - 8080
+    ports:
+      - 8081:8080

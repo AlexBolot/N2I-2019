@@ -6,5 +6,4 @@ cd ../matching
 mvn clean package
 cd ..
 
-docker-compose run --rm start_dependencies
-docker-compose up
+docker-compose up --build

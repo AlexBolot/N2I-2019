@@ -1,5 +1,0 @@
-spring:
-  datasource:
-    url: jdbc:postgresql://postgres-profil:54320/matchmaking
-    username: matchmaking
-    password: matchmaking
