@@ -1,0 +1,4 @@
+datasource:
+    url: jdbc:postgresql://postgres-profil:5432
+    username: matchmacking
+    password: matchmacking
