@@ -2,9 +2,11 @@
 
 cd profil
 mvn clean package
-cd ../matching
+cd ..
+cd matching
 mvn clean package
-cd ../procedures
+cd ..
+cd procedures
 mvn clean package
 cd ..
 
