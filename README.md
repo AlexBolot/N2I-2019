@@ -8,6 +8,8 @@ Notre solution va donc proposer à l'utilsateur des profils ayant complété une
 
 ## Les services
 
+![image](https://drive.google.com/uc?export=view&id=1EKC-893CHlbCI-KwsVUWo3OSdNS0npVl)
+
 ### Profil
 Ce service est chargé de la gestion des profils uilisateurs (nom, prénom, mail, age, ville)
 Il s'agit principalement d'un service de CRUD (Create, Read, Update, Delete)
