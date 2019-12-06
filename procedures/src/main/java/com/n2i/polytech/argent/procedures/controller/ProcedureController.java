@@ -2,6 +2,8 @@ package com.n2i.polytech.argent.procedures.controller;
 
 import com.n2i.polytech.argent.procedures.model.Procedure;
 import com.n2i.polytech.argent.procedures.repo.ProceduresRepo;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -18,26 +20,26 @@ public class ProcedureController {
     }
 
     @GetMapping(value = "/{email}")
-    public List<Procedure> access(@PathVariable("email") String email) {
+    public ResponseEntity<List<Procedure>> access(@PathVariable("email") String email) {
         List<Procedure> result = new ArrayList<>();
         proceduresRepo.findAllByOwnerEmail(email).forEach(result::add);
-        return result;
+        return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
     @GetMapping(value = "/")
-    public List<Procedure> getAll() {
+    public ResponseEntity<List<Procedure>> getAll() {
         List<Procedure> result = new ArrayList<>();
         proceduresRepo.findAll().forEach(result::add);
-        return result;
+        return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
     @PostMapping(value = "/")
-    public String create(@RequestBody Procedure procedure) {
+    public ResponseEntity<String> create(@RequestBody Procedure procedure) {
         if (!proceduresRepo.existsById(procedure.getId())) {
             proceduresRepo.save(procedure);
-            return "OK";
+            return new ResponseEntity<>("Created " + procedure.toString(), HttpStatus.OK);
         }
-        return "KO";
+        return new ResponseEntity<>("Already exists " + procedure.toString(), HttpStatus.FORBIDDEN);
     }
 
 }
