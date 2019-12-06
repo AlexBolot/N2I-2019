@@ -40,6 +40,6 @@ public class MatchingController {
     }
 
     private List<Procedure> getAllProcedures() {
-        return (List<Procedure>) new RestTemplate().getForObject("http://localhost:8080" + "/procedure/", ResponseEntity.class).getBody();
+        return (List<Procedure>) new RestTemplate().getForObject("http://localhost:8082" + "/procedure/", ResponseEntity.class).getBody();
     }
 }

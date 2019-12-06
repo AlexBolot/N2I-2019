@@ -1,11 +1,10 @@
 package com.n2i.polytech.argent.procedures.model;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Getter
@@ -16,6 +15,8 @@ import javax.persistence.Id;
 public class Procedure {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
     private String ownerEmail;
     private Status status;
 
