@@ -1,7 +1,6 @@
 package com.n2i.polytech.argent.matching.controller;
 
 import com.n2i.polytech.argent.matching.model.Procedure;
-import com.n2i.polytech.argent.matching.repo.ProceduresRepo;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,12 +17,6 @@ import java.util.stream.Collectors;
 @RequestMapping(path = "/matching", consumes = "application/json")
 public class MatchingController {
 
-    private final ProceduresRepo proceduresRepo;
-
-    public MatchingController(ProceduresRepo proceduresRepo) {
-        this.proceduresRepo = proceduresRepo;
-    }
-
     @GetMapping(value = "/{email}")
     public ResponseEntity<List<Procedure>> access(@PathVariable("email") String email) {
         List<Procedure> myProcedures = getMyProcedures(email);
@@ -34,12 +27,10 @@ public class MatchingController {
     }
 
     private List<Procedure> getMyProcedures(String email) {
-        List<Procedure> myProcedures = new ArrayList<>();
-        proceduresRepo.findAllByOwnerEmail(email).forEach(myProcedures::add);
-        return myProcedures;
+        return new RestTemplate().getForEntity("http://localhost:8082/procedure/theos.mariani@gmail.com", List.class).getBody();
     }
 
     private List<Procedure> getAllProcedures() {
-        return (List<Procedure>) new RestTemplate().getForObject("http://localhost:8082" + "/procedure/", ResponseEntity.class).getBody();
+        return new RestTemplate().getForEntity("http://localhost:8082/procedure/", List.class).getBody();
     }
 }

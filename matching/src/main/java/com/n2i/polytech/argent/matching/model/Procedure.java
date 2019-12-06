@@ -5,20 +5,15 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-
 @Getter
 @Setter
 @ToString
 @EqualsAndHashCode
-@Entity
 public class Procedure {
 
-    @Id
     private int id;
-    private Status status;
     private String ownerEmail;
+    private Status status;
 
     public enum Status {
         IN_PROGRESS,

@@ -24,11 +24,7 @@ echo
 echo "Getting my procedures"
 curl -H "Content-Type: application/json" -X GET http://localhost:8082/procedure/theos.mariani@gmail.com
 echo
-echo
-echo "Finding matching profiles"
-curl -H "Content-Type: application/json" -X GET http://localhost:8081/matching/theos.mariani@gmail.com
-echo
 echo "------------------------------------------------"
 echo
 
-docker-compose down
+# docker-compose down
