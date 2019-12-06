@@ -28,7 +28,6 @@ public class ProfilController {
 
     @PostMapping(value = "/login", consumes = "text/plain")
     public ResponseEntity<Profil> login(@RequestBody String email){
-        System.out.println(email);
         Optional<Profil> p = profilRepository.findById(email);
         if(p.isPresent())
             return new ResponseEntity<>(p.get(),HttpStatus.OK);
