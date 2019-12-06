@@ -12,8 +12,8 @@ public class Profil {
     @Id
     private String email;
 
-    private String fistName;
+    private String firstName;
     private String name;
     private int age;
-    private String Ville;
+    private String ville;
 }

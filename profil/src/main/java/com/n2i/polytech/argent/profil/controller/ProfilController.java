@@ -23,20 +23,21 @@ public class ProfilController {
         Optional<Profil> p = profilRepository.findById(email);
         if(p.isPresent())
             return new ResponseEntity<>(p.get(),HttpStatus.OK);
-        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-    @PostMapping("/login")
+    @PostMapping(value = "/login", consumes = "text/plain")
     public ResponseEntity<Profil> login(@RequestBody String email){
+        System.out.println(email);
         Optional<Profil> p = profilRepository.findById(email);
         if(p.isPresent())
             return new ResponseEntity<>(p.get(),HttpStatus.OK);
-        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
     @PostMapping("/")
-    public ResponseEntity<Profil> create(@RequestBody Profil profil){
+    public ResponseEntity<String> create(@RequestBody Profil profil){
         profilRepository.save(profil);
-        return new ResponseEntity<>(HttpStatus.OK);
+        return new ResponseEntity<String>("Created "+profil.toString(),HttpStatus.OK);
     }
 }

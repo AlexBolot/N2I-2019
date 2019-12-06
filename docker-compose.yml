@@ -3,8 +3,8 @@ version: '3'
 services:
 
   profil:
-    container_name: profil
-    image: profil
+    container_name: mtheos/profil
+    image: mtheos/profil
     build:
       context: profil
       dockerfile: Dockerfile
@@ -16,8 +16,8 @@ services:
       - 8080:8080
 
   matching:
-    container_name: matching
-    image: matching
+    container_name: mtheos/matching
+    image: mtheos/matching
     build:
       context: matching
       dockerfile: Dockerfile
@@ -29,8 +29,8 @@ services:
       - 8081:8080
 
   procedures:
-    container_name: procedures
-    image: procedures
+    container_name: mtheos/procedures
+    image: mtheos/procedures
     build:
       context: procedures
       dockerfile: Dockerfile
