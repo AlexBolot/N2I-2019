@@ -27,3 +27,9 @@ Nous avons des images pour la partie backend (services et BD) :
 - profil:latest (`docker pull mtheos/profil:latest`)
 - procedure:latest (`docker pull mtheos/procedure:latest`)
 - matching:latest (`docker pull mtheos/matching:latest`)
+
+# Lancer le projet
+
+- Lancer le script `prepare.sh` pour compiler, créer les images Docker et lancer un docker-compose.
+(Cela devrait prendre une minute)
+- Dans un deuxième terminal, lancer le script `test.sh` (une fois le docker-compose terminé dans le premier terminal)
