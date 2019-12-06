@@ -16,9 +16,8 @@ import javax.persistence.Id;
 public class Procedure {
 
     @Id
-    private int id;
-    private Status status;
     private String ownerEmail;
+    private Status status;
 
     public enum Status {
         IN_PROGRESS,

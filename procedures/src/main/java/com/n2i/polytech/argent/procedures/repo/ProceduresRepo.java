@@ -6,4 +6,5 @@ import org.springframework.data.repository.CrudRepository;
 public interface ProceduresRepo extends CrudRepository<Procedure, Integer> {
 
     Iterable<Procedure> findAllByOwnerEmail(String email);
+    boolean existsByOwnerEmail(String email);
 }

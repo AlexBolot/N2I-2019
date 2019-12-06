@@ -35,7 +35,7 @@ public class ProcedureController {
 
     @PostMapping(value = "/")
     public ResponseEntity<String> create(@RequestBody Procedure procedure) {
-        if (!proceduresRepo.existsById(procedure.getId())) {
+        if (proceduresRepo.existsByOwnerEmail(procedure.getOwnerEmail())) {
             proceduresRepo.save(procedure);
             return new ResponseEntity<>("Created " + procedure.toString(), HttpStatus.OK);
         }
